@@ -40,4 +40,10 @@ router.post("/", async (req, res) => {
   };
 });
 
+//* Delete Route
+router.delete("/:id", async (req, res) => {
+  await Holiday.findByIdAndRemove(req.params.id);
+  res.json({ message: "Holiday Deleted" });
+});
+
 module.exports = router;

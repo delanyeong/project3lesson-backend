@@ -22,4 +22,15 @@ router.get('/', (req, res) => {
   res.send('holidays');
 })
 
+//* Create Route
+router.post("/", async (req, res) => {
+  console.log("body", req.body)
+  try {
+    const createdHoliday = await Holiday.create(req.body);
+    res.status(200).send(createdHoliday);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  };
+});
+
 module.exports = router;
